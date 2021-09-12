@@ -74,7 +74,7 @@ def plot_game_board(game_board, i_am):
     # Show one button for each field.
     st.session_state.online_board = np.copy(game_board)
     for i, row in enumerate(game_board):
-        cols = st.beta_columns([0.1, 0.1, 0.1, 0.1, 0.1, 0.5])
+        cols = st.columns([0.1, 0.1, 0.1, 0.1, 0.1, 0.5])
         for j, field in enumerate(row):
             cols[j].button(
                 field,

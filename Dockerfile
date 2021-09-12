@@ -1,5 +1,5 @@
-# docker build --progress=plain --no-cache -t streamlit-apps .
-# docker save -o streamlit-apps.tar streamlit-apps
+# docker build --progress=plain --no-cache -t kavehbc/streamlit-apps .
+# docker save -o streamlit-apps.tar kavehbc/streamlit-apps
 # docker load --input streamlit-apps.tar
 
 FROM python:3.8-buster

@@ -49,7 +49,7 @@ def tictactoe():
 
     # Show one button for each field.
     for i, row in enumerate(st.session_state.board):
-        cols = st.beta_columns([0.1, 0.1, 0.1, 0.7])
+        cols = st.columns([0.1, 0.1, 0.1, 0.7])
         for j, field in enumerate(row):
             cols[j].button(
                 field,

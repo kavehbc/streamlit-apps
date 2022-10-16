@@ -35,6 +35,12 @@ This is an online chat-box among online users.
 This is an online whiteboard base on the user's session ID. We can also watch the other whiteboards live.
 
 ___
+## Demo
+You can access the demo version deployed on Streamlit server at:
+
+[https://fun-games.streamlitapp.com/](https://fun-games.streamlitapp.com/)
+
+___
 ## Run
 In order to run this tool, you must have Streamlit installed on your machine/environment:
 

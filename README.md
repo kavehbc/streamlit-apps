@@ -62,5 +62,3 @@ Kaveh Bakhtiyari - [Website](http://bakhtiyari.com) | [Medium](https://medium.co
 
 ## Contribution
 Feel free to join the open-source community and contribute to this repository.
-
-    

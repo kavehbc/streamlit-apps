@@ -1,27 +1,22 @@
-import pandas as pd
-from PIL import Image
 import base64
 import json
 import streamlit as st
 from streamlit_drawable_canvas import st_canvas
-from streamlit.server.server import Server
-from streamlit.report_thread import get_report_ctx
 import asyncio
 
-current_session_id = get_report_ctx().session_id
+from lib.streamlit_session import get_session_id, get_all_sessions
+
+current_session_id = get_session_id()
 st_status = st.empty()
 st_update_flag = False
 
 
 def all_sessions():
-    all_session_ids = []
-    session_infos = Server.get_current()._session_info_by_id.values()
-    for session_info in session_infos:
-        all_session_ids.append(session_info.session.id)
-    return all_session_ids
+    session_infos = get_all_sessions()
+    return session_infos
 
 
-@st.cache(allow_output_mutation=True)
+@st.cache_resource
 def whiteboard_data():
     return {"1": {}}
 

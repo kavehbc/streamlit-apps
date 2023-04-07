@@ -1,0 +1,12 @@
+name: st-apps
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10
+  - numpy
+  - pandas
+  - pip
+  - pip:
+      - streamlit==1.21.0
+      - streamlit-drawable-canvas

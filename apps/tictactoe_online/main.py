@@ -1,5 +1,4 @@
 import streamlit as st
-from streamlit import caching
 import numpy as np
 import pandas as pd
 import asyncio
@@ -47,12 +46,12 @@ def checkWin(board):
     return checkDiagonals(board)
 
 
-@st.cache(allow_output_mutation=True)
+@st.cache_resource()
 def board():
     return np.full((5, 5), ".", dtype=str)
 
 
-@st.cache(allow_output_mutation=True)
+@st.cache_resource()
 def select_next_player():
     return ["X"]
 
@@ -92,7 +91,10 @@ def plot_game_board(game_board, i_am):
 
 def reset_game():
     st.session_state.winner = "."
-    caching.clear_cache()
+    # clear cache
+    st.cache_data.clear()
+    st.cache_resource.clear()
+
     st.experimental_rerun()
 
 

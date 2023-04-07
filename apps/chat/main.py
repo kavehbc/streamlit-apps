@@ -1,14 +1,13 @@
 import streamlit as st
-from streamlit.server.server import Server
-from streamlit.report_thread import get_report_ctx
 import datetime
 import asyncio
+from lib.streamlit_session import get_session_id, get_all_sessions
 
-current_session_id = get_report_ctx().session_id
+current_session_id = get_session_id()
 
 
 def count_online_users():
-    session_infos = Server.get_current()._session_info_by_id.values()
+    session_infos = get_all_sessions()
     session_counter = 0
     for session_info in session_infos:
         session_counter += 1
@@ -16,7 +15,7 @@ def count_online_users():
 
 
 def rerun_all(current_session_id):
-    session_infos = Server.get_current()._session_info_by_id.values()
+    session_infos = get_all_sessions()
     for session_info in session_infos:
         session_info.session.flush_browser_queue()
         session_info.session.request_rerun()
@@ -24,7 +23,7 @@ def rerun_all(current_session_id):
 st.rerun = rerun_all
 
 
-@st.cache(allow_output_mutation=True)
+@st.cache_resource()
 def message():
     ts = datetime.datetime.now().timestamp()
     return {"1": {"timestamp": ts, "user": "System", "message": "Welcome"}}
